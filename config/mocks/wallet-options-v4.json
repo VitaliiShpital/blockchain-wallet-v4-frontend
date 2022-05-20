@@ -32,9 +32,9 @@
         }
       },
       "featureFlags": {
-        "applePayPaymentMethod": false,
         "addCheckoutPaymentProvider": true,
         "addStripePaymentProvider": false,
+        "applePayPaymentMethod": false,
         "coinViewV2": false,
         "completeYourProfile": true,
         "createExchangeUserOnSignupOrLogin": true,
@@ -46,16 +46,17 @@
         "mergeAndUpgrade": false,
         "nftExplorer": true,
         "recurringBuys": true,
+        "rewardsFlowUnderSwapEnabled": true,
         "showTermsAndConditions": false,
-        "stxSelfCustodyEnableAll": true,
         "stxSelfCustodyEnableAirdrop": true,
+        "stxSelfCustodyEnableAll": true,
         "taxCenter": true,
         "tradingCurrencyFlyout": true,
+        "unifiedAccountLogin": true,
         "useNewPaymentProviders": true,
         "walletConnect": true,
-        "withdrawalLocksFundsOnHold": true,
-        "unifiedAccountLogin": true,
-        "walletDebitCardEnabled": true
+        "walletDebitCardEnabled": true,
+        "withdrawalLocksFundsOnHold": true
       }
     }
   },
