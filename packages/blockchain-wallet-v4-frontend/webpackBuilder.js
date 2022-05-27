@@ -10,6 +10,7 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 const threadLoader = require('thread-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 
 // configs
@@ -73,6 +74,7 @@ const buildWebpackConfig = (envConfig, extraPluginsList) => ({
   output: {
     assetModuleFilename: 'resources/[name][ext]', // default asset path that is usually overwritten in specific modules.rules
     crossOriginLoading: 'anonymous',
+    chunkFilename: '[chunkhash].js',
     filename: '[name].[fullhash:8].js',
     path: CONFIG_PATH.ciBuild,
     publicPath: '/'
@@ -128,6 +130,19 @@ const buildWebpackConfig = (envConfig, extraPluginsList) => ({
         template: CONFIG_PATH.src + '/index.html',
         filename: 'index.html'
       }),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            force: true,
+            from: 'public',
+          },
+          {
+            force: true,
+            from: CONFIG_PATH.walletOptions,
+            to: CONFIG_PATH.appBuild
+          }
+        ]
+      }),
       new HtmlReplaceWebpackPlugin([
         {
           pattern: '**APP_VERSION**',
@@ -168,9 +183,7 @@ const buildWebpackConfig = (envConfig, extraPluginsList) => ({
         }
       })
     ],
-    runtimeChunk: {
-      name: 'runtime'
-    }
+    runtimeChunk: false
   }
 })
 
