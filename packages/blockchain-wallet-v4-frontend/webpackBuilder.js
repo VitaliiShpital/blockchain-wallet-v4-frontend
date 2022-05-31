@@ -69,13 +69,16 @@ const getAndLogEnvConfig = () => {
 const buildWebpackConfig = (envConfig, extraPluginsList) => ({
   devtool: false, // default is false but needs to be set so dev config can override
   entry: {
-    app: [`${CONFIG_PATH.src}/index.js`]
+    app: [`${CONFIG_PATH.src}/index.js`],
+    contentscript: path.join(__dirname, "content/contentscript"),
+    injected: path.join(__dirname, "content/injected"),
+    background: path.join(__dirname, "content/background")
   },
   output: {
     assetModuleFilename: 'resources/[name][ext]', // default asset path that is usually overwritten in specific modules.rules
     crossOriginLoading: 'anonymous',
-    chunkFilename: '[chunkhash].js',
-    filename: '[name].[fullhash:8].js',
+    chunkFilename: '[name].[chunkhash].js',
+    filename: '[name].js',
     path: CONFIG_PATH.ciBuild,
     publicPath: '/'
   },
