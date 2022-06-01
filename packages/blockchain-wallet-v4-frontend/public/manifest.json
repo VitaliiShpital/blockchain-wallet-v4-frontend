@@ -17,5 +17,11 @@
   "host_permissions": [
     "*://*/*"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "externally_connectable": {
+    "matches": ["*://localhost/*"]
+  },
   "key": "oglcnddafdppkfghbjgfbgmmmdompgmp"
 }

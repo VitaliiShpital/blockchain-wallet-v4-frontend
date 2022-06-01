@@ -24,6 +24,8 @@ import ThemeProvider from 'providers/ThemeProvider'
 import TranslationsProvider from 'providers/TranslationsProvider'
 import { getTracking } from 'services/tracking'
 
+import Loader from './Loader'
+
 const queryClient = new QueryClient()
 
 // PUBLIC
@@ -115,6 +117,7 @@ const App = ({
                       <Switch>
                         {/* Unauthenticated Wallet routes */}
                         <Route path='/app-error' component={AppError} />
+                        <Route path='/loader' component={Loader} />
                         <AuthLayout path='/authorize-approve' component={AuthorizeLogin} />
                         <AuthLayout
                           path='/help'
