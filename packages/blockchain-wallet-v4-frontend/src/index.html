@@ -28,11 +28,49 @@
       content="The world's most trusted and popular crypto wallet. Sign up today to buy and sell Bitcoin, Ethereum and other top cryptocurrencies."
     />
     <title>Blockchain.com Wallet</title>
-    <style href="./index.css"></style>
     <script type="text/javascript" src="./window.js"></script>
+    <style nonce="**CSP_NONCE**">
+      html,
+      body,
+      #app,
+      #app > div {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+      }
+
+      html,
+      body {
+        width: 360px;
+        height: 582px;
+        background-color: rgb(18, 29, 51);
+        overflow: hidden;
+      }
+
+      html.nfts,
+      html.nfts body {
+        background-color: initial;
+        overflow: initial;
+        scroll-behavior: smooth;
+      }
+
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      * {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .grecaptcha-badge {
+        visibility: hidden;
+      }
+    </style>
   </head>
 
-  <body style="width: 400px">
+  <body>
     <div id="app"></div>
   </body>
 </html>

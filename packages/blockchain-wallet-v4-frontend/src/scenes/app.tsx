@@ -24,6 +24,8 @@ import ThemeProvider from 'providers/ThemeProvider'
 import TranslationsProvider from 'providers/TranslationsProvider'
 import { getTracking } from 'services/tracking'
 
+import Intro from './extension/Intro'
+
 const queryClient = new QueryClient()
 
 // PUBLIC
@@ -31,7 +33,7 @@ const AppError = React.lazy(() => import('./AppError'))
 const AuthorizeLogin = React.lazy(() => import('./AuthorizeLogin'))
 const Help = React.lazy(() => import('./Help'))
 const HelpExchange = React.lazy(() => import('./HelpExchange'))
-const Login = React.lazy(() => import('./Login'))
+const Login = React.lazy(() => import('./extension/Login'))
 const Logout = React.lazy(() => import('./Logout'))
 const MobileLogin = React.lazy(() => import('./MobileLogin'))
 const ProductPicker = React.lazy(() => import('./Signup/ProductPicker'))
@@ -126,10 +128,15 @@ const App = ({
                           component={HelpExchange}
                           pageTitle={`${BLOCKCHAIN_TITLE} | Help`}
                         />
-                        <AuthLayout
+                        <Route
+                          path='/intro'
+                          component={Intro}
+                          pageTitle={`${BLOCKCHAIN_TITLE} | Intro`}
+                        />
+                        <Route
                           path='/login'
                           component={Login}
-                          pageTitle={`${BLOCKCHAIN_TITLE} | Login`}
+                          pageTitle={`${BLOCKCHAIN_TITLE} | Intro`}
                         />
                         <AuthLayout path='/logout' component={Logout} />
                         <AuthLayout
@@ -253,7 +260,7 @@ const App = ({
                           hideMenu={coinViewV2}
                           center={coinViewV2}
                         />
-                        {isAuthenticated ? <Redirect to='/home' /> : <Redirect to='/login' />}
+                        {isAuthenticated ? <Redirect to='/home' /> : <Redirect to='/intro' />}
                       </Switch>
                     </Suspense>
                   </ConnectedRouter>
