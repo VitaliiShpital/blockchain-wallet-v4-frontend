@@ -2,7 +2,7 @@
 import BitcoinCash from 'bitcoinforksjs-lib'
 import * as Bitcoin from 'bitcoinjs-lib'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
-import { createHashHistory } from 'history'
+import { createBrowserHistory } from 'history'
 import { persistCombineReducers, persistStore } from 'redux-persist'
 import { configureStore } from '@reduxjs/toolkit'
 import { compose } from 'redux'
@@ -73,7 +73,7 @@ const configuredStore = async function () {
   }
 
   // initialize router and saga middleware
-  const history = createHashHistory()
+  const history = createBrowserHistory()
   const sagaMiddleware = createSagaMiddleware()
   const { isAuthenticated } = selectors.auth
   const socketUrl = options.domains.webSocket

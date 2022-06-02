@@ -1,9 +1,7 @@
 import React, { FC } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { Redirect, Route } from 'react-router-dom'
-
 import { selectors } from 'data'
-
 import Loading from './template.loading'
 import { WalletLayout } from './WalletLayout'
 

@@ -14,6 +14,7 @@ import { UserDataType } from 'data/types'
 import { useDefer3rdPartyScript } from 'hooks'
 import AuthLayout from 'layouts/Auth'
 import AuthLoading from 'layouts/Auth/template.loading'
+import BottomBarLayout from 'layouts/extension/BottomBarLayout'
 import NftsLayout from 'layouts/Nfts'
 import WalletLayout from 'layouts/Wallet'
 import WalletLoading from 'layouts/Wallet/template.loading'
@@ -25,6 +26,7 @@ import TranslationsProvider from 'providers/TranslationsProvider'
 import { getTracking } from 'services/tracking'
 
 import Intro from './extension/Intro'
+import MainRoutes from "../routes/MainRoutes";
 
 const queryClient = new QueryClient()
 
@@ -138,6 +140,7 @@ const App = ({
                           component={Login}
                           pageTitle={`${BLOCKCHAIN_TITLE} | Intro`}
                         />
+                        <Route path='/home' component={MainRoutes} />
                         <AuthLayout path='/logout' component={Logout} />
                         <AuthLayout
                           path='/select-product'
@@ -260,7 +263,7 @@ const App = ({
                           hideMenu={coinViewV2}
                           center={coinViewV2}
                         />
-                        {isAuthenticated ? <Redirect to='/home' /> : <Redirect to='/intro' />}
+                        {/*{isAuthenticated ? <Redirect to='/home' /> : <Redirect to='/main' />}*/}
                       </Switch>
                     </Suspense>
                   </ConnectedRouter>
